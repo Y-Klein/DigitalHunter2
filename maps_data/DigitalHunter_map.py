@@ -7,8 +7,8 @@ def plot_map_with_geometry(coords,
     countries = gpd.read_file(shapefile_path)
 
     fig, ax = plt.subplots(figsize=(8, 10))
-
-    xmin, xmax, ymin, ymax = 30, 33, 34, 36
+    x_tupl, y_tupl = zip(*coords)
+    xmin, xmax, ymin, ymax = min(x_tupl), max(x_tupl), min(y_tupl), max(y_tupl)
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(ymin, ymax)
     ax.set_aspect('equal', adjustable='datalim')
@@ -26,9 +26,9 @@ def plot_map_with_geometry(coords,
         ax.plot(x, y, marker='o', color='red', markersize=8, label='Point')
     elif len(coords) > 1:
         x_coords, y_coords = zip(*coords)
-        ax.plot(x_coords, y_coords, color='blue', linewidth=2, label='Path')
-        ax.scatter(x_coords, y_coords, color='red', s=30)  # הצגת הנקודות על הקו
-
+        ax.plot(x_coords, y_coords, color='blue', linewidth=1, label='Path')
+        ax.scatter(x_coords[0], y_coords[0], color='green', s=20)  # הצגת הנקודות על הקו
+        ax.scatter(x_coords[-1], y_coords[-1], color='red', s=20)
     plt.title('Map View')
     plt.legend()
     plt.show()

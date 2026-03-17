@@ -22,7 +22,7 @@ def q3():
 
 @app.get('/q4')
 def q4():
-    return {'msg':'The place is under construction! Please be patient.'}
+    return dal.q4()
 
 @app.get('/q5')
 def q5(entity_id):

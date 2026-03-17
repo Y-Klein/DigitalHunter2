@@ -47,7 +47,25 @@ def q3():
     return result
 
 def q4():
-    pass
+    result = []
+    cursor.execute("""  select day_tabl.entity_id from(
+                            select entity_id 
+                            from intel_signals
+                            where hour(timestamp) between 8 and 20
+                            group by entity_id 
+                            having sum(distance_from_last) = 0) 
+                        as day_tabl
+                        inner join (
+                            select entity_id 
+                            from intel_signals
+                            where hour(timestamp) not between 8 and 20
+                            group by entity_id 
+                            having sum(distance_from_last) > 10) 
+                        as night_tabl""")
+    fetch = cursor.fetchall()
+    for x in fetch:
+        result.append(x)
+    return result
 
 def q5(entity_id):
     result = []
@@ -59,4 +77,3 @@ def q5(entity_id):
         result.append(x)
     plot_map_with_geometry(result)
 
-q5('TGT-001')
