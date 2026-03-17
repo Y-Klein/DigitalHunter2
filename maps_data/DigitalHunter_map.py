@@ -3,12 +3,12 @@ import geopandas as gpd
 
 
 def plot_map_with_geometry(coords,
-                           shapefile_path="ne_50m_admin_0_countries.shp"):
+                           shapefile_path=r"C:\git\DigitalHunter2\maps_data\ne_50m_admin_0_countries.shp"):
     countries = gpd.read_file(shapefile_path)
 
     fig, ax = plt.subplots(figsize=(8, 10))
 
-    xmin, xmax, ymin, ymax = 34, 36, 29.5, 34
+    xmin, xmax, ymin, ymax = 30, 33, 34, 36
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(ymin, ymax)
     ax.set_aspect('equal', adjustable='datalim')
@@ -34,8 +34,3 @@ def plot_map_with_geometry(coords,
     plt.show()
 
 
-# if __name__ == '__main__':
-#     # my_points = [(35.08, 33.09)]
-#     my_points = [(35.0, 32.0), (35.2, 32.5), (35.5, 33.0)]
-#
-#     plot_map_with_geometry(my_points)

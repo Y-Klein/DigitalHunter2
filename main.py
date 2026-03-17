@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+import dal
 
 app = FastAPI()
 
@@ -9,23 +10,23 @@ def root():
 
 @app.get('/q1')
 def q1():
-    return {'msg':'The place is under construction! Please be patient.'}
+    return dal.q1()
 
 @app.get('/q2')
 def q2():
-    return {'msg':'The place is under construction! Please be patient.'}
+    return dal.q2()
 
 @app.get('/q3')
 def q3():
-    return {'msg':'The place is under construction! Please be patient.'}
+    return dal.q3()
 
 @app.get('/q4')
 def q4():
     return {'msg':'The place is under construction! Please be patient.'}
 
 @app.get('/q5')
-def q5():
-    return {'msg':'The place is under construction! Please be patient.'}
+def q5(entity_id):
+    dal.q5(entity_id)
 
 @app.get('/q6')
 def q6():
