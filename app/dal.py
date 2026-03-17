@@ -2,7 +2,7 @@ import mysql.connector
 from maps_data.DigitalHunter_map import plot_map_with_geometry
 
 mydb = mysql.connector.connect(
-  host="localhost",
+  host="mysql",
   user="root",
   password="root",
   database="digital_hunter"
